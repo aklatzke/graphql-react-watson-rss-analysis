@@ -1,0 +1,37 @@
+{
+  "name": "react-sentiment",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "10.4.0"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.1.7",
+    "child_process": "^1.0.2",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.0-rc.2",
+    "graphql-tag": "^2.9.2",
+    "npm-watch": "^0.3.0",
+    "react": "^16.4.0",
+    "react-apollo": "^2.1.4",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "request": "^2.87.0",
+    "url": "^0.11.0",
+    "util": "^0.11.0"
+  },
+  "watch": {
+    "build": "src/**/*.js"
+  },
+  "scripts": {
+    "postinstall": "cd server && npm i && npm run build",
+    "start": "node ./server/dist/index",
+    "build": "react-scripts build && rm -rf server/public && mv build server/public",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "watch": "npm-watch"
+  }
+}
