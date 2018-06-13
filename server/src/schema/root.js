@@ -1,13 +1,20 @@
 import {
-    GraphQLSchema,
+    GraphQLList,
     GraphQLObjectType,
+    GraphQLSchema,
     GraphQLString,
-    GraphQLList
 } from 'graphql';
 
 import { feedType } from './types/feedType';
 import { articleType } from './types/articleType';
 import { rssType } from './types/rssType';
+
+import { 
+    sentimentType, 
+    assessmentType, 
+    watsonToneType, 
+    watsonResponseType 
+} from './types/sentimentType';
 
 import feeds from '../db/feeds';
 
@@ -22,11 +29,14 @@ const feedMutations = new GraphQLObjectType({
                 },
                 rss: {
                     type: GraphQLString
+                },
+                image: {
+                    type: GraphQLString
                 }
             },
-            resolve : ( root, { name, rss } ) => {
+            resolve : ( root, { name, rss, image } ) => {
                 if( name && rss ){
-                    return feeds.insert( { name, rss } )
+                    return feeds.insert( { name, rss, image } )
                 }
             }
         }
@@ -61,6 +71,17 @@ const queryType = new GraphQLObjectType({
                 }
             },
             resolve: (root, { id }) => feeds.getRSS( id )
+        },
+
+        analyze : {
+            type: GraphQLList(sentimentType),
+            args: {
+                contents : {
+                    type: GraphQLList(GraphQLString),
+                    description: "Content to analyze"
+                }
+            },
+            resolve: (root, { contents }) => feeds.analyze(contents)
         }
     })
 })
@@ -68,5 +89,13 @@ const queryType = new GraphQLObjectType({
 export default new GraphQLSchema({
     query: queryType,
     mutation: feedMutations,
-    types: [feedType, rssType, articleType]
+    types: [
+        articleType, 
+        assessmentType,
+        feedType, 
+        rssType, 
+        sentimentType, 
+        watsonResponseType,
+        watsonToneType
+    ]
 })

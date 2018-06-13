@@ -6,6 +6,7 @@ import { client, gqlTag } from '../graphql';
 import SourceList from  './list/List';
 import SourceSearch from './search/Search';
 import SourceAdd from './add/Add';
+import ArticleComparison from '../comparison/Comparison';
 
 const SINGLE_FEED_QUERY = gqlTag`
   query feed( $id : String! ){
@@ -19,7 +20,8 @@ const SINGLE_FEED_QUERY = gqlTag`
 
 export default class Source extends Component {
   state = {
-    sources: []
+    sources: [],
+    comparison: []
   }
 
   addSource = (_id) => {
@@ -34,17 +36,39 @@ export default class Source extends Component {
     }) )
   }
 
+  addCompare = (article, source) => {
+    article.source = source;
+
+    this.setState({
+      comparison: [...this.state.comparison, article]
+    })
+  }
+
   render() {
     return (
       <div className="source row pt-5">
-        <div className='col-4'>
-          <SourceAdd />
+        <div className='col-8'>
+          <div className='row'>
+            <div className='col-8'>
+              <legend className='top-level-legend'>Add a New Feed Below</legend>
+              <SourceAdd />
+            </div>
+            <div className='col-4'>
+              <legend className='top-level-legend'>Find a Feed Below</legend>
+              <SourceSearch addSource={ this.addSource }/>        
+            </div>            
+          </div>
+          <div className='row'>
+            <div className='col-12'>
+
+              <ArticleComparison comparisonArticles={ this.state.comparison }/>
+            </div>
+          </div>
         </div>
+
         <div className='col-4'>
-          <SourceSearch addSource={ this.addSource }/>        
-        </div>
-        <div className='col-4'>
-          <SourceList sources={ this.state.sources }/>        
+          <legend className='top-level-legend'>Current Feeds (Click to Expand)</legend>        
+          <SourceList sources={ this.state.sources } addCompare={ this.addCompare }/>        
         </div>                
       </div>
     )

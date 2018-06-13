@@ -6,9 +6,10 @@ import ListItem from './item/Item';
 export default class List extends Component {
   render() {
     return (
-      <ul className='source-list list-group'>
-        { this.props.sources.map( item => <ListItem key={item.name} item={ item } /> ) }
-      </ul>
+      <div className='source-list'>
+        { this.props.sources.length ? '' : '(none added)' }
+        { this.props.sources.map( item => <ListItem key={item.name} item={ item } addCompare={ this.props.addCompare } /> ) }
+      </div>
     )
   }
 }
