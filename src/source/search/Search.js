@@ -8,7 +8,8 @@ let ALL_QUERY = gqlTag`{
   allFeeds{
     _id,
     name,
-    rss
+    rss,
+    image
   }
 }`;  
 

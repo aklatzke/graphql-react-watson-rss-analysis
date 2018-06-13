@@ -62,7 +62,7 @@ export default class Item extends Component {
     return (
       <div class='card mb-2'>
         <div className='card-body'>
-            <h5 onClick={ () => this.toggleFeed() }className='card-title'>{ this.props.item.name } { this.state.feedIsVisible ? <small>(collapse)</small> : <small>(expand)</small> }</h5>
+            <h5 onClick={ () => this.toggleFeed() }className='card-title'><img src={this.props.item.image} className="source-logo"/> { this.props.item.name } { this.state.feedIsVisible ? <small>(collapse)</small> : <small>(expand)</small> }</h5>
             { this.maybeRenderFeed() }
         </div>
       </div>

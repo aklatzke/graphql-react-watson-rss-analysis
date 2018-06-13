@@ -5,4 +5,15 @@
     font-size: 14px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 0px;
+}
+
+.mood-list h6{
+    text-align: center;
+}
+
+.mood-list .mood-legend{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12px;
 }

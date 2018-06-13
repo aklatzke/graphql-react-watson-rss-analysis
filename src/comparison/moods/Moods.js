@@ -13,7 +13,7 @@ export default class Moods extends Component {
       data: {}
     }
   }
-
+   
   componentDidMount(){
     this.generateGraph();
   }

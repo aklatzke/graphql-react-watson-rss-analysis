@@ -18,6 +18,10 @@ export const feedType = new GraphQLObjectType({
     rss: {
       type: GraphQLString,
       description: 'Endpoint for the RSS feed.'
+    },
+    image: {
+      type: GraphQLString,
+      description: "Link to image"
     }
   })
 })

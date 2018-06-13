@@ -45,6 +45,7 @@ export default class Comparison extends Component {
     if( this.props.comparisonArticles.length ){
       return <div className='col-12'>
               <button className='btn btn-outline-secondary btn-block' onClick={ this.runAnalyze }>Analyze</button>
+              <hr />
              </div>
     }
   }
@@ -95,7 +96,7 @@ export default class Comparison extends Component {
       <div className="comparison pt-4">
         <div className='row'>
           <p className='col-12 comparison-heading'>Articles For Comparison:</p>
-          { this.props.comparisonArticles.length ? '' : '(none added)' }
+          { this.props.comparisonArticles.length ? '' : <div className='col-12' style={{ textAlign: "center" }}>Add Articles to Begin</div> }
           { this.maybeRenderItems() }     
           { this.maybeRenderAnalyze() }   
           { this.maybeRenderOutput() }

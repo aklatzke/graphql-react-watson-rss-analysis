@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { client, gqlTag } from "../../graphql";
 
 let INSERT_MUTATION = gqlTag`
-  mutation createFeed( $name: String!, $rss: String! ){
-    createFeed( name: $name, rss: $rss ){
+  mutation createFeed( $name: String!, $rss: String!, $image: String ){
+    createFeed( name: $name, rss: $rss, image: $image ){
       _id,
       name,
-      rss
+      rss,
+      image
     }
   }
 `

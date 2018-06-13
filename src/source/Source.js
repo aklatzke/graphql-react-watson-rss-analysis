@@ -13,7 +13,8 @@ const SINGLE_FEED_QUERY = gqlTag`
     feed( id: $id ){
       _id,
       rss,
-      name
+      name,
+      image
     }
   }
 `
@@ -60,7 +61,6 @@ export default class Source extends Component {
           </div>
           <div className='row'>
             <div className='col-12'>
-
               <ArticleComparison comparisonArticles={ this.state.comparison }/>
             </div>
           </div>

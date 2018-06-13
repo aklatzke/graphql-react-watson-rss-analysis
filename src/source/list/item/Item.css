@@ -1,0 +1,24 @@
+.source-logo{
+    height: 40px;
+    float: left;
+}
+
+.source-list h5.card-title{
+    font-weight: 100;
+    line-height: 40px;
+    margin-bottom: 0px;
+}
+
+.source-list h5.card-title small{
+    float: right;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.source-list .list-group{
+    margin-top: 6px;
+}
+
+.source-list .list-group-item{
+    border-radius: 0px;
+}
