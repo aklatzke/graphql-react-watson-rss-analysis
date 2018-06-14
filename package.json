@@ -30,8 +30,7 @@
     "build": "src/**/*.js"
   },
   "scripts": {
-    "postinstall": "cd server && npm i && npm run build",
-    "start": "node ./server/dist/index",
+    "start": "cd server && npm run start",
     "build": "react-scripts build && rm -rf server/public && mv build server/public",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
