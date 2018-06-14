@@ -31,7 +31,6 @@ export default class Search extends Component {
   }
 
   onSearchSelect = (value) => {
-    console.log(value)
     this.props.addSource(value);
     this.setState({
       inputValue: ''

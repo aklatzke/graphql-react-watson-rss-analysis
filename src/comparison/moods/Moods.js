@@ -5,9 +5,7 @@ import Plot from 'react-plotly.js';
 export default class Moods extends Component {
   constructor(props){
     super(props);
-
-    console.log(props)
-
+    
     this.state = {
       layout: {},
       data: {}
@@ -27,7 +25,7 @@ export default class Moods extends Component {
   generateGraph(){  
     let props = props || this.props;
     let dataArray = [];
-    console.log(this.props)
+
     let thisTrace = {
       x: this.props.data.tone.map( mood => mood.tone_name ),
       y: this.props.data.tone.map( mood => mood.score ),
